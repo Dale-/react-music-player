@@ -1,11 +1,12 @@
 import React from 'react';
+import './progress.less'
 
 let Progress = React.createClass({
     render() {
         return (
-        	<p>
-	            已播放：{this.props.progress}s
-        	</p>
+        	<div className="component-progress">
+	            <div className="progress" style={{width: `${this.props.progress}%`}}></div>
+        	</div>
         );
     }
 });
