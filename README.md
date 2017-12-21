@@ -1,7 +1,5 @@
 # React Music Player
 
-![](/static/images/face-the-music.jpg)
-
 Build music player with React tasks designed to automate your daily development routine such as
 templates, scripts, styles and translations concatenation, uglification and minimisation.
 
