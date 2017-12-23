@@ -35,8 +35,8 @@ let Player = React.createClass({
         <h1 className="caption">我的私人音乐坊 &gt;</h1>
         <div className="mt20 row">
           <div className="controll-wrapper">
-            <h2 className="music-title">歌曲名称</h2>
-            <h3 className="music-artist mt10">歌手</h3>
+            <h2 className="music-title">{this.props.currentMusicItem.title}</h2>
+            <h3 className="music-artist mt10">{this.props.currentMusicItem.artist}</h3>
             <div className="row mt20">
               <div className="left-time -col-auto">-2:00</div>
               <div className="volume-container">
@@ -59,7 +59,7 @@ let Player = React.createClass({
             </div>
           </div>
           <div className="-col-auto cover">
-            <img src="" alt="歌曲名称"/>
+            <img src={this.props.currentMusicItem.cover} alt={this.props.currentMusicItem.title}/>
           </div>
         </div>
       </div>
