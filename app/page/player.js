@@ -45,7 +45,10 @@ let Player = React.createClass({
               </div>
             </div>
             <div style={{height: 10, lineHeight: '10px'}}>
-              播放进度部分
+              <Progress
+                progress={this.state.progress}
+                onProgressChange={this.handleProgressChange}>
+              </Progress>
             </div>
             <div className="mt35 row">
               <div>
