@@ -8,7 +8,8 @@ let Player = React.createClass({
 
   getInitialState() {
     return {
-      progress: 0
+      progress: 0,
+      volume: 0
     }
   },
 
@@ -16,6 +17,7 @@ let Player = React.createClass({
 		$("#player").bind($.jPlayer.event.timeupdate, (e) => {
       duration = e.jPlayer.status.duration;
 			this.setState({
+        volume: e.jPlayer.options.volume * 100,
 				progress: e.jPlayer.status.currentPercentAbsolute
 			});
 		});
@@ -27,6 +29,10 @@ let Player = React.createClass({
 
   handleProgressChange(progress) {
     $("#player").jPlayer('play', duration * progress);
+  },
+
+  handleVolumeChange(progress) {
+    $("#player").jPlayer('volume', progress);
   },
 
   render() {
@@ -41,7 +47,13 @@ let Player = React.createClass({
               <div className="left-time -col-auto">-2:00</div>
               <div className="volume-container">
                 <i className="icon-volume rt" style={{top: 5, left: -5}}></i>
-                <div className="volume-wrapper">音量控制部分</div>
+                <div className="volume-wrapper">
+                  <Progress
+                    progress={this.state.volume}
+                    onProgressChange={this.handleVolumeChange}
+                    barColor="#aaa">
+                  </Progress>
+                </div>
               </div>
             </div>
             <div style={{height: 10, lineHeight: '10px'}}>
