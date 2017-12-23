@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './components/header'
 import Progress from './components/progress'
 
+let duration = null;
 let Root = React.createClass({
 
   componentDidMount() {
@@ -16,6 +17,7 @@ let Root = React.createClass({
 			useStateClassSkin: true
 		});
 		$("#player").bind($.jPlayer.event.timeupdate, (e) => {
+      duration = e.jPlayer.status.duration;
 			this.setState({
 				progress: e.jPlayer.status.currentPercentAbsolute
 			});
@@ -30,13 +32,17 @@ let Root = React.createClass({
       progress: 0
     }
   },
-
+  handleProgressChange(progress) {
+    $("#player").jPlayer('play', duration * progress);
+  },
   render() {
     return (
       <div>
         <Header />
         <Progress
           progress={this.state.progress}
+          onProgressChange={this.handleProgressChange}
+          barColor="#ffee00"
         >
         </Progress>
       </div>
