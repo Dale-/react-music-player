@@ -30,7 +30,6 @@ let Player = React.createClass({
   render() {
     return (
       <div>
-        <Header />
         <Progress
           progress={this.state.progress}
           onProgressChange={this.handleProgressChange}
